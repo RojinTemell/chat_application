@@ -1,28 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:chat_application/products/models/message_model.dart';
 import 'package:intl/intl.dart';
+
+class ChatBubble extends StatelessWidget {
+  const ChatBubble({super.key, required this.message});
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(15),
+            bottomRight: Radius.circular(15),
+            topLeft: Radius.circular(15),
+          )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+        child: Text(
+          message,
+          style: const TextStyle(color: Colors.black),
+        ),
+      ),
+    );
+    
+  }
+}
+
+
+
 
 class MessageBubble extends StatelessWidget {
   const MessageBubble({
     Key? key,
-    required this.message,
-    required this.isMe,
-    required this.isImage,
+    
+    required this.isMe, required this.message,
+    
   }) : super(key: key);
 
   final bool isMe;
-  final bool isImage;
-  final MessageModel message;
+  final String message;
+ 
+  
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 5),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Align(
         alignment: isMe ? Alignment.topRight : Alignment.topLeft,
         child: Container(
           decoration: BoxDecoration(
-              color: isMe ? Colors.grey : Colors.blue,
+              color: isMe ? Colors.blue : Colors.grey,
               borderRadius: isMe
                   ? const BorderRadius.only(
                       topRight: Radius.circular(15),
@@ -41,23 +71,10 @@ class MessageBubble extends StatelessWidget {
                 crossAxisAlignment:
                     isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: [
-                  isImage
-                      ? Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Container(
-                            height: 200,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                    image: NetworkImage(message.content),
-                                    fit: BoxFit.cover)),
-                          ),
-                      )
-                      : Padding(
+                 Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
                         child: Text(
-                            message.content,
+                            message,
                             style: const TextStyle(color: Colors.white),
                           ),
                       ),
