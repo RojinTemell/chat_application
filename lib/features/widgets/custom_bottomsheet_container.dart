@@ -40,7 +40,7 @@ class CustomBottomSheetContainer extends StatelessWidget {
             icon: Icons.share,
             text: 'Share',
           ),
-           SizedBox(
+          SizedBox(
             height: size.height * 0.08,
           ),
         ],

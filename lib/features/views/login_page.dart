@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (formKey.currentState!.validate()) {
                           // LoginProcess();
                           signIn();
-                          widget.navigateToWidget(context, const ChatsScreen());
+                          widget.navigateToWidget(context,  ChatsScreen());
                         }
                       },
                     ),

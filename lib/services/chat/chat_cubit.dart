@@ -1,16 +1,21 @@
+import 'package:bloc/bloc.dart';
 import 'package:chat_application/models/message.dart';
+import 'package:chat_application/services/chat/chat_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ChatService extends ChangeNotifier {
+class ChatCubit extends Cubit<ChatState> {
   //instances of firestore and firebaseAuth
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
+  ChatCubit() : super(ChatState(isLoading: false));
+
   //Send message
-  Future<void> sendMessage(String receiverId, String message) async {
+  Future<void> sendMessage(
+      String receiverId, String message, controller) async {
     // get current user info
     final currentUserId = _firebaseAuth.currentUser!.uid;
     final timestamp = Timestamp.now();
@@ -29,11 +34,15 @@ class ChatService extends ChangeNotifier {
 
     //add new message to database
 
-    await _firebaseFirestore
-        .collection('chat_rooms')
-        .doc(chatRoomId)
-        .collection('messages')
-        .add(newMessage.toJson());
+    if (controller.text.isNotEmpty) {
+      await _firebaseFirestore
+          .collection('chat_rooms')
+          .doc(chatRoomId)
+          .collection('messages')
+          .add(newMessage.toJson());
+
+      controller.clear();
+    }
   }
 
   //Get message

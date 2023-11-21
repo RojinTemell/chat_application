@@ -4,15 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ChatsScreen extends StatefulWidget with NavigatorManager {
-  const ChatsScreen({super.key});
+class ChatsScreen extends StatelessWidget with NavigatorManager {
+   ChatsScreen({super.key});
 
-  @override
-  State<ChatsScreen> createState() => _ChatsScreenState();
-}
-
-class _ChatsScreenState extends State<ChatsScreen> {
   final _auth = FirebaseAuth.instance;
+
   //sor ama başka bir snapshot ı da nasıl kullanabilirim
   @override
   Widget build(BuildContext context) {
@@ -39,7 +35,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
               padding: const EdgeInsets.only(top: 20),
               child: ListView(
                 children: snapshot.data!.docs
-                    .map<Widget>((doc) => _userListItem(doc))
+                    .map<Widget>((doc) => _userListItem(doc,context))
                     .toList(),
               ),
             );
@@ -47,7 +43,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
     );
   }
 
-  Widget _userListItem(DocumentSnapshot document) {
+  Widget _userListItem(DocumentSnapshot document ,BuildContext context) {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     if (_auth.currentUser!.email != data['email']) {
@@ -56,7 +52,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
         child: ListTile(
           trailing: InkWell(
               onTap: () {
-                widget.navigateToWidget(
+               navigateToWidget(
                     context,
                     ChatScreen(
                       receiverName: data['email'],
@@ -84,7 +80,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           ),
           title: Text(data['name']),
           onTap: () {
-            widget.navigateToWidget(
+           navigateToWidget(
                 context,
                 ChatScreen(
                   receiverName: data['name'],
