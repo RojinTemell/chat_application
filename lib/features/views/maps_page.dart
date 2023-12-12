@@ -6,9 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-void main() {
+/*void main() {
   runApp(const MapsScreen());
-}
+}*/
 
 class MapsScreen extends StatelessWidget {
   const MapsScreen({super.key});
@@ -16,7 +16,7 @@ class MapsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(title: 'Rozify Maps'),
+      home: MyHomePage(),
     );
   }
 }
@@ -120,9 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title ?? ''),
-      ),
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: initialLocation,
@@ -132,11 +129,17 @@ class _MyHomePageState extends State<MyHomePage> {
           _controller = controller;
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.location_searching),
-        onPressed: () {
-          getCurrentLocation();
-        },
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 5.0),
+        child: FloatingActionButton(
+          backgroundColor: Colors.transparent,
+          
+          child: Icon(Icons.location_searching),
+          onPressed: () {
+            getCurrentLocation();
+          },
+        ),
       ),
     );
   }

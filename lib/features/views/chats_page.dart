@@ -17,14 +17,15 @@ class ChatsScreen extends StatefulWidget with NavigatorManager {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
-  int _selectedIndex = 1; // Başlangıç ekranını MusicScreen olarak ayarla
+  int _selectedIndex = 1; 
+   List<String> _pageTitles = ['Maps', 'Music', 'Chats'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Chats',
+          _pageTitles[_selectedIndex],
           style: Theme.of(context)
               .textTheme
               .headlineLarge!
@@ -50,7 +51,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                   _selectedIndex = index;
                 });
               },
-              selectedIndex: _selectedIndex, // Bu satırı ekleyerek seçili index'i belirtin
+              selectedIndex: _selectedIndex, 
               padding: const EdgeInsets.all(16),
               tabs: const [
                 GButton(icon: Icons.map, text: 'Maps'),

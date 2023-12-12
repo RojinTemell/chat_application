@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chat_application/features/mixins/navigator_manager.dart';
 import 'package:chat_application/features/widgets/chat_bubble.dart';
 import 'package:chat_application/services/chat/chat_state.dart';
@@ -17,6 +19,13 @@ class ChatScreen extends StatelessWidget with NavigatorManager {
   final String receiverId;
   final TextEditingController _messageController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final ScrollController scrollController = ScrollController();
+
+  void scrollEvent() {
+    scrollController.animateTo(scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+    print('oldu');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +73,12 @@ class ChatScreen extends StatelessWidget with NavigatorManager {
             children: [
               Expanded(
                   child: TextFieldWidget(
+                callback: () {
+                  Timer(Duration(milliseconds: 300), () {
+                    scrollController
+                        .jumpTo(scrollController.position.maxScrollExtent);
+                  });
+                },
                 hintText: 'Write some thing ...',
                 keyboardType: TextInputType.text,
                 controller: _messageController,
@@ -98,7 +113,10 @@ class ChatScreen extends StatelessWidget with NavigatorManager {
               final data = snapshot.data!.docs
                   .map((document) => _messageItem(document))
                   .toList();
-              return ListView(children: data);
+              return ListView(
+                children: data,
+                controller: scrollController,
+              );
             });
       },
     );
