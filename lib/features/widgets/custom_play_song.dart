@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../mixins/bottom_sheet_mixin.dart';
 
-class PlaySongContainer extends StatelessWidget with BottomSheetMixin {
+
+class PlaySongContainer extends StatelessWidget  {
   const PlaySongContainer(
       {super.key,
       required this.song,

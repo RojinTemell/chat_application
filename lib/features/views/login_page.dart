@@ -1,4 +1,4 @@
-import 'package:chat_application/features/views/chats_page.dart';
+import 'package:chat_application/features/views/home_page.dart';
 import 'package:chat_application/features/views/signup_page.dart';
 import 'package:chat_application/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (formKey.currentState!.validate()) {
                           // LoginProcess();
                           signIn();
-                          widget.navigateToWidget(context,  ChatsScreen());
+                          widget.navigateToWidget(context, const HomePage());
                         }
                       },
                     ),

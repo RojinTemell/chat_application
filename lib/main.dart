@@ -1,7 +1,7 @@
-import 'package:chat_application/features/views/main_page.dart';
 import 'package:chat_application/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'features/views/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark(
           useMaterial3: true,
         ),
-        home: const MainPage());
+        home: const HomePage());
   }
 }
