@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-class PlaySongContainer extends StatelessWidget  {
+class PlaySongContainer extends StatelessWidget {
   const PlaySongContainer(
       {super.key,
       required this.song,
@@ -23,7 +22,7 @@ class PlaySongContainer extends StatelessWidget  {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
+              child: Image.network(
                 imgPath,
                 height: size.height * 0.4,
                 width: size.width * 0.85,
