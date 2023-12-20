@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final screens = [
     const MusicScreen(),
     ChatsScreen(),
-    MusicRecognitionPage(),
+    const MusicRecognitionPage(),
     const MapsScreen(),
   ];
 
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.chat_bubble_outline),
                 label: 'Chat',
                 selectedIcon: Icon(Icons.chat_bubble)),
-                NavigationDestination(
+            NavigationDestination(
                 icon: Icon(Icons.mic),
                 label: 'Mic',
                 selectedIcon: Icon(Icons.mic_external_off_outlined)),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../mixins/bottom_sheet_mixin.dart';
 
-class CustomListTitle extends StatelessWidget with BottomSheetMixin{
+class CustomListTitle extends StatelessWidget with BottomSheetMixin {
   const CustomListTitle({
     super.key,
     required this.artist,
     required this.imgPath,
-    required this.song, required this.widget, required this.onTap,
+    required this.song,
+    required this.widget,
+    required this.onTap,
   });
   final String artist;
   final String imgPath;
@@ -20,11 +22,11 @@ class CustomListTitle extends StatelessWidget with BottomSheetMixin{
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        leading: Image.asset(imgPath),
+        leading:Image(image:  NetworkImage(imgPath)),
         title: Text(song),
         subtitle: Text('Song .$artist'),
         trailing: InkWell(
-          onTap: (){
+          onTap: () {
             showBottomSheetCustom(context, widget);
           },
           child: const Icon(Icons.menu),
