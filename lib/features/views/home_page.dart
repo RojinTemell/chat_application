@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'chats_page.dart';
-import 'maps_page.dart';
+// import 'maps_page.dart';
 import 'music_page.dart';
-import 'music_recognition_page.dart';
+// import 'music_recognition_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,8 +19,8 @@ class _HomePageState extends State<HomePage> {
   final screens = [
     const MusicScreen(),
     ChatsScreen(),
-    const MusicRecognitionPage(),
-    const MapsScreen(),
+    // const MusicRecognitionPage(),
+    // const MapsScreen(),
   ];
 
   Future<void> signOut() async {
@@ -32,6 +32,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Container(
+          width: 64,
+          height: 64,
+          decoration: BoxDecoration(
+              color:const Color.fromARGB(255, 4, 82, 121),
+              borderRadius: BorderRadius.circular(32)),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.mic,
+              size: 35,
+            ),
+          )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: screens[index],
       bottomNavigationBar: NavigationBar(
           selectedIndex: index,
@@ -49,14 +63,14 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.chat_bubble_outline),
                 label: 'Chat',
                 selectedIcon: Icon(Icons.chat_bubble)),
-            NavigationDestination(
-                icon: Icon(Icons.mic),
-                label: 'Mic',
-                selectedIcon: Icon(Icons.mic_external_off_outlined)),
-            NavigationDestination(
-                icon: Icon(Icons.map_outlined),
-                label: 'Map',
-                selectedIcon: Icon(Icons.map)),
+            // NavigationDestination(
+            //     icon: Icon(Icons.mic),
+            //     label: 'Mic',
+            //     selectedIcon: Icon(Icons.mic_external_off_outlined)),
+            // NavigationDestination(
+            //     icon: Icon(Icons.map_outlined),
+            //     label: 'Map',
+            //     selectedIcon: Icon(Icons.map)),
           ]),
     );
   }

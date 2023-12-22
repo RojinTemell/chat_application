@@ -15,13 +15,16 @@ class MusicScreen extends StatefulWidget {
 
 class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
   final _store = FirebaseFirestore.instance;
-
+ String Varsayilan_Url='https://firebasestorage.googleapis.com/v0/b/chatapplication-d1fdc.appspot.com/o/sanatciFoto%2FEdipAkbayram.jpeg?alt=media&token=2355fb41-22dd-44cc-a6d6-801a05b34fd9';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.find_replace))],
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu_open_outlined)),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.find_replace))
+        ],
+        leading: IconButton(
+            onPressed: () {}, icon: const Icon(Icons.menu_open_outlined)),
         title: const Text('Music'),
         centerTitle: true,
       ),
@@ -39,10 +42,13 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
             padding: const EdgeInsets.all(8.0),
             child: ListView(
               children: snapshot.data!.docs.map<Widget>((doc) {
-                Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-                String imgPath = data != null && data.containsKey('SanatciFotoUrl') && data['SanatciFotoUrl'] is String
+                Map<String, dynamic>? data =
+                    doc.data() as Map<String, dynamic>?;
+                String imgPath = data != null &&
+                        data.containsKey('SanatciFotoUrl') &&
+                        data['SanatciFotoUrl'] is String
                     ? data['SanatciFotoUrl']
-                    : 'Varsayilan_Url';
+                    : Varsayilan_Url;
 
                 return Card(
                   child: CustomListTitle(

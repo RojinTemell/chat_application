@@ -22,14 +22,22 @@ class CustomListTitle extends StatelessWidget with BottomSheetMixin {
     return InkWell(
       onTap: onTap,
       child: ListTile(
-        leading:Image(image:  NetworkImage(imgPath)),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image(
+            image: NetworkImage(imgPath),
+            width: MediaQuery.of(context).size.width * 0.17,
+            height: MediaQuery.of(context).size.height * 0.07,
+            fit: BoxFit.fill,
+          ),
+        ),
         title: Text(song),
         subtitle: Text('Song .$artist'),
         trailing: InkWell(
           onTap: () {
             showBottomSheetCustom(context, widget);
           },
-          child: const Icon(Icons.menu),
+          child: const Icon(Icons.heart_broken),//burayı değiştirirsin
         ),
       ),
     );

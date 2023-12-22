@@ -39,7 +39,7 @@ class PlaySongContainer extends StatelessWidget {
                       Text(song,
                           style: Theme.of(context)
                               .textTheme
-                              .headlineMedium!
+                              .headlineSmall!
                               .copyWith(fontWeight: FontWeight.bold)),
                       Text(
                         artist,
@@ -47,21 +47,21 @@ class PlaySongContainer extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(
-                    width: size.width * 0.14,
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.add,
-                        size: 30,
-                      )),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.share,
-                        size: 30,
-                      ))
+                  // SizedBox(
+                  //   width: size.width * 0.14,
+                  // ),
+                  // IconButton(
+                  //     onPressed: () {},
+                  //     icon: const Icon(
+                  //       Icons.add,
+                  //       size: 30,
+                  //     )),
+                  // IconButton(
+                  //     onPressed: () {},
+                  //     icon: const Icon(
+                  //       Icons.share,
+                  //       size: 30,
+                  //     ))
                 ],
               ),
             ),
