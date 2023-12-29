@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: ^2.22.0 
+  just_audio: ^0.9.36
+  audioplayers: ^5.2.1
   firebase_auth: ^4.13.0
   cloud_firestore: ^4.13.0
   timeago: ^3.6.0

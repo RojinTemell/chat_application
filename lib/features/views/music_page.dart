@@ -63,7 +63,9 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
                           artist: data?['SanatciAdi'] ?? '',
                           song: data?['SarkiAdi'] ?? '',
                           imgPath: imgPath,
+                          songUrl: data?['SarkiUrl'] ?? '', 
                         ),
+
                       );
                     },
                   ),
