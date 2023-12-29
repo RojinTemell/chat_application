@@ -15,7 +15,8 @@ class MusicScreen extends StatefulWidget {
 
 class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
   final _store = FirebaseFirestore.instance;
- String Varsayilan_Url='https://firebasestorage.googleapis.com/v0/b/chatapplication-d1fdc.appspot.com/o/sanatciFoto%2FEdipAkbayram.jpeg?alt=media&token=2355fb41-22dd-44cc-a6d6-801a05b34fd9';
+  String Varsayilan_Url =
+      'https://firebasestorage.googleapis.com/v0/b/chatapplication-d1fdc.appspot.com/o/sanatciFoto%2FEdipAkbayram.jpeg?alt=media&token=2355fb41-22dd-44cc-a6d6-801a05b34fd9';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +64,9 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
                           artist: data?['SanatciAdi'] ?? '',
                           song: data?['SarkiAdi'] ?? '',
                           imgPath: imgPath,
-                          songUrl: data?['SarkiUrl'] ?? '', 
+                          songUrl: data?['SarkiUrl'] ?? '',
+                          map: data!,
                         ),
-
                       );
                     },
                   ),
