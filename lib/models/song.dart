@@ -3,9 +3,12 @@ class SongModel {
   final String SanatciFotoUrl;
   final String SarkiAdi;
   final String SarkiUrl;
+  final String UserId;
 
   SongModel(
+    
       {required this.SanatciAdi,
+      required this.UserId, 
       required this.SanatciFotoUrl,
       required this.SarkiAdi,
       required this.SarkiUrl});
@@ -16,6 +19,7 @@ class SongModel {
       'SanatciFotoUrl': SanatciFotoUrl,
       'SarkiAdi': SarkiAdi,
       'SarkiUrl': SarkiUrl,
+      'UserId':UserId,
     };
   }
 }

@@ -6,14 +6,14 @@ import 'package:chat_application/services/favoriteSong/favorite_song_service.dar
 
 import '../mixins/bottom_sheet_mixin.dart';
 
-class CustomListTitle extends StatefulWidget with BottomSheetMixin {
-  const CustomListTitle({
+class FavoriListTitle extends StatefulWidget with BottomSheetMixin {
+  const FavoriListTitle({
     Key? key,
     required this.artist,
     required this.imgPath,
     required this.song,
     required this.songUrl,
-    required this.widget,
+    
     required this.onTap,
     
   }) : super(key: key);
@@ -21,15 +21,14 @@ class CustomListTitle extends StatefulWidget with BottomSheetMixin {
   final String imgPath;
   final String song;
   final String songUrl;
-  final Widget widget;
   final VoidCallback onTap;
-
+  
   @override
-  State<CustomListTitle> createState() => _CustomListTitleState();
+  State<FavoriListTitle> createState() => _FavoriListTitleState();
 }
 
-class _CustomListTitleState extends State<CustomListTitle> {
-  bool isTap = false;
+class _FavoriListTitleState extends State<FavoriListTitle> {
+  
   FavoriteSong _songService = FavoriteSong();
 
   @override
@@ -50,22 +49,12 @@ class _CustomListTitleState extends State<CustomListTitle> {
         subtitle: Text('Song .${widget.artist}'),
         trailing: InkWell(
           onTap: () {
-            setState(() {
-              isTap = !isTap;
-            });
-            if (isTap) {
-              _songService.sendSong(
-                  widget.artist, widget.imgPath, widget.song, widget.songUrl);
-            } else {
-              _songService.deleteSong(widget.song);
-            }
+            _songService.deleteSong(widget.song);
           },
-          child: isTap
-              ? const FaIcon(
-                  FontAwesomeIcons.solidHeart,
-                  color: Colors.red,
-                )
-              : const FaIcon(FontAwesomeIcons.heart),
+          child: const FaIcon(
+            FontAwesomeIcons.solidHeart,
+            color: Colors.red,
+          ),
         ),
       ),
     );
