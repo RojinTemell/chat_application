@@ -1,3 +1,4 @@
+import 'package:chat_application/features/views/favorite_songs.dart';
 import 'package:chat_application/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

@@ -50,6 +50,12 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
                         data['SanatciFotoUrl'] is String
                     ? data['SanatciFotoUrl']
                     : Varsayilan_Url;
+                int currentIndex = 0;
+                for (var i = 0; i < snapshot.data!.docs.length; i++) {
+                  if (snapshot.data!.docs[i].id == doc.id) {
+                    currentIndex = i;
+                  }
+                }
 
                 return Card(
                   child: CustomListTitle(
@@ -57,6 +63,7 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
                     widget: const CustomBottomSheetContainer(),
                     imgPath: imgPath,
                     song: data?['SarkiAdi'] ?? '',
+                    songUrl: data?['SarkiUrl'] ?? '',
                     onTap: () {
                       showBottomSheetCustom(
                         context,
@@ -65,7 +72,9 @@ class _MusicScreenState extends State<MusicScreen> with BottomSheetMixin {
                           song: data?['SarkiAdi'] ?? '',
                           imgPath: imgPath,
                           songUrl: data?['SarkiUrl'] ?? '',
-                          map: data!,
+                          data: data ?? {},
+                          maps: snapshot.data!.docs,
+                          currentIndex: currentIndex,
                         ),
                       );
                     },
